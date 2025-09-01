@@ -1,11 +1,54 @@
-# You Need a Budget Analytics
+# YNAB Budget Analyzer
 
-[You Need A Budget](https://www.ynab.com) is a budgeting app that uses four rules to help people reduce stress around finances.
+This project provides a deeper analysis of your YNAB budget data. It connects to the YNAB API to fetch your latest budget and transaction data, and then generates a report that helps you understand your spending habits and identify areas where you are over or under budget.
 
-I have been using it since 2012, and have come across a few areas where I wish there was more functionality. One area is reporting, the other is debt management.
+## Features
 
-## Reporting
-YNAB provides views of analogous to an income statement for income vs. expenses. It also provides a [dreaded pie chart](https://towardsdatascience.com/the-case-against-the-pie-chart-43f4c3fccc6) of payees over specified periods of time. None of these views tell me, "over the past paycheck, where did I screw up?" The budget analysis notebook is my first look into these questions.
+- **YNAB API Integration:** Fetches your latest data directly from YNAB, so your analysis is always up-to-date.
+- **Budget vs. Actuals Analysis:** Compares your budgeted amounts with your actual spending for each category.
+- **Detailed Reporting:** Generates a summary report and visualizations to help you quickly identify the categories with the largest budget variances.
+- **Customizable Filtering:** Allows you to exclude certain payees, categories, and accounts from the analysis.
 
-## Debt management
-Each month, YNAB resets budget categories that have gone negative. This creates an issue where there is no tracking for historical overages. Reasons these might occur could be - car repairs, vet bills, fancy dinner with your spouse, or moving to a different state. The list is endless, which makes planning for them (sometimes) impossible. The reality is, it happens. When visibility is limited or non-existant, it is difficult to correct the issue. I haven't coded this out yet, but will take an approach in the coming weeks.
+## Getting Started
+
+### Prerequisites
+
+- Python 3.8+
+- A YNAB account and your [Personal Access Token](https://app.ynab.com/settings/developer).
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/ynab-analysis.git
+   cd ynab-analysis
+   ```
+
+2. **Install the dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configure the application:**
+   - Rename the `sample_config.py` file to `config.py`.
+   - Open `config.py` and add your YNAB API key and budget ID.
+     ```python
+     ynab_api_key = 'YOUR_YNAB_API_KEY'
+     budget_id = 'YOUR_BUDGET_ID'
+     ```
+   - You can find your `budget_id` by navigating to your budget in the YNAB web app. The URL will be in the format `https://app.ynab.com/BUDGET_ID/budget/`.
+   - You can also customize the `excluded_payees`, `excluded_prefixes`, `excluded_categories`, and `excluded_accounts` lists in `config.py` to filter the analysis.
+
+### Running the Analysis
+
+To run the budget analysis, simply execute the `budget_analyzer.py` script:
+
+```bash
+python budget_analyzer.py
+```
+
+The script will print a summary report to the console and display plots showing the budget vs. actuals analysis.
+
+## Contributing
+
+Contributions are welcome! If you have any ideas for new features or improvements, please open an issue or submit a pull request.
