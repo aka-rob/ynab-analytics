@@ -6,7 +6,9 @@ This project provides a deeper analysis of your YNAB budget data. It connects to
 
 - **YNAB API Integration:** Fetches your latest data directly from YNAB, so your analysis is always up-to-date.
 - **Budget vs. Actuals Analysis:** Compares your budgeted amounts with your actual spending for each category.
-- **Detailed Reporting:** Generates a summary report and visualizations to help you quickly identify the categories with the largest budget variances.
+- **Spending Forecast:** Uses historical transaction data to predict future spending by category, helping you plan ahead.
+- **Percentage-Based Budget Recommendations:** Analyzes historical spending patterns and recommends budget allocations based on actual spending percentages.
+- **Detailed Reporting:** Generates comprehensive summary reports and visualizations to help you quickly identify budget variances and opportunities for optimization.
 - **Customizable Filtering:** Allows you to exclude certain payees, categories, and accounts from the analysis.
 
 ## Getting Started
@@ -47,7 +49,40 @@ To run the budget analysis, simply execute the `budget_analyzer.py` script:
 python budget_analyzer.py
 ```
 
-The script will print a summary report to the console and display plots showing the budget vs. actuals analysis.
+The script will:
+1. Print a budget analysis summary showing over-budget and under-budget categories
+2. Generate spending forecasts based on historical data (default: 3 months)
+3. Provide percentage-based budget recommendations
+4. Display three types of visualizations:
+   - Budget vs. Actuals comparison (over/under budget categories)
+   - Forecasted spending vs. current budget
+   - Percentage-based budget recommendations with pie chart and comparison
+
+## Understanding the Analysis
+
+### Budget vs. Actuals
+Compares your current month's budgeted amounts with actual spending, highlighting categories where you're over or under budget.
+
+### Spending Forecast
+Analyzes historical spending patterns to predict future spending:
+- Calculates average spending per category over the past N months
+- Provides confidence bounds (forecasted +/- standard deviation)
+- Identifies budget gaps where forecasted spending exceeds current budget
+
+### Percentage-Based Budget Recommendations
+Recommends budget allocations based on historical spending patterns:
+- Calculates each category's percentage of total historical spending
+- Suggests budget amounts that reflect actual spending priorities
+- Helps reallocate budget to align with real spending behavior
+- Shows adjustment needed for each category
+
+### Key Metrics Explained
+
+- **Forecasted:** Predicted spending based on historical averages
+- **Budget Gap:** Difference between forecasted spending and current budget (negative = need more budget)
+- **Percentage:** Category's share of total spending
+- **Recommended Budget:** Suggested budget allocation based on spending percentage
+- **Adjustment Needed:** Difference between recommended and current budget
 
 ## Contributing
 
